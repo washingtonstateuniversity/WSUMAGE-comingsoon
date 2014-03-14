@@ -3,7 +3,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 
 	public function match(Zend_Controller_Request_Http $request) {
 
-		$helper = Mage::helper('Wsu_ComingSoon');
+		$helper = Mage::helper('wsu_comingsoon');
 		$storeCode = $request->getStoreCodeFromPath();
 
 		$enabled = $helper->getConfig('enabled', $storeCode);
@@ -82,7 +82,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 	 * @param type $verbosityLevelRequired verbosity (0 = no logging, 1 = only denied requests, 2 = denied and granted requests)
 	 */
 	private function __log($string, $verbosityLevelRequired = 1, $storeCode = null, $zendLevel = Zend_Log::DEBUG) {
-		$helper = Mage::helper('Wsu_ComingSoon');
+		$helper = Mage::helper('wsu_comingsoon');
 		$logFile = trim($helper->getConfig('logFile', $storeCode));
 		$logVerbosity = trim($helper->getConfig('logVerbosity', $storeCode));
 

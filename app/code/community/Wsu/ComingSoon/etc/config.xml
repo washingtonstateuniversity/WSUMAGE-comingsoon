@@ -8,19 +8,19 @@
 	
 	<global>
 		<helpers>
-			<Wsu_ComingSoon>
+			<wsu_comingsoon>
 				<class>BalkeTechnologies_StoreMaintenance_Helper</class>
-			</Wsu_ComingSoon>
+			</wsu_comingsoon>
 		</helpers>
 		<blocks>
-			<Wsu_ComingSoon>
+			<wsu_comingsoon>
 				<class>BalkeTechnologies_StoreMaintenance_Block</class>
-			</Wsu_ComingSoon>    
+			</wsu_comingsoon>    
 		</blocks>
 		<models>
-			<Wsu_ComingSoon>
+			<wsu_comingsoon>
 				<class>BalkeTechnologies_StoreMaintenance_Model</class>    
-			</Wsu_ComingSoon>
+			</wsu_comingsoon>
 		</models>
 	</global>
 
