@@ -77,6 +77,36 @@
 				<logVerbosity>1</logVerbosity>
 				<logFile>maintenance.log</logFile>
 			</settings>
+			<coming>
+				<enabled>0</enabled>
+				<allowedIPs></allowedIPs>
+				<allowFrontendForAdmins>1</allowFrontendForAdmins>
+				<maintenancePage><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Maintenance</title>
+		<style type="text/css"><!--
+
+			*{ margin: 0px; passing: 0px; }
+			body{ background-color: #222222; color: #DDDDDD; font-family: sans-serif; margin-top: 350px; }
+			h1{ margin-bottom: 20px; margin-left: 0px; }
+			h2{ margin-left: 494px; font-size: 1.6em; }
+			.block{ padding: 25px; background-color: #555555; }
+			.centered{ margin-left: auto; margin-right: auto; width: 800px; }
+			--></style>
+	</head>
+	<body>
+		<div class="block">
+			<div class="centered">
+				<h1>we are sorry but this store is down for maintenance</h1>
+				<h2>please try again later ...</h2>
+			</div>
+		</div>
+	</body>
+</html>]]></maintenancePage>
+				<logVerbosity>1</logVerbosity>
+				<logFile>maintenance.log</logFile>
+			</coming>
 		</comingsoon>
 	</default>
  
