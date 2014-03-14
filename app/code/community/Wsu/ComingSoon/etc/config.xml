@@ -9,17 +9,17 @@
 	<global>
 		<helpers>
 			<wsu_comingsoon>
-				<class>BalkeTechnologies_StoreMaintenance_Helper</class>
+				<class>Wsu_ComingSoon_Helper</class>
 			</wsu_comingsoon>
 		</helpers>
 		<blocks>
 			<wsu_comingsoon>
-				<class>BalkeTechnologies_StoreMaintenance_Block</class>
+				<class>Wsu_ComingSoon_Block</class>
 			</wsu_comingsoon>    
 		</blocks>
 		<models>
 			<wsu_comingsoon>
-				<class>BalkeTechnologies_StoreMaintenance_Model</class>    
+				<class>Wsu_ComingSoon_Model</class>    
 			</wsu_comingsoon>
 		</models>
 	</global>
