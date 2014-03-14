@@ -6,11 +6,17 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 		$helper = Mage::helper('wsu_comingsoon');
 		$storeCode = $request->getStoreCodeFromPath();
 
-		$enabled = $helper->getConfig('enabled', $storeCode);
+
+		$coming_enabled = $helper->getConfig('coming','enabled', $storeCode);
+		if (1 != $coming_enabled) {
+			$enabled = $helper->getConfig('settings','enabled', $storeCode);
+		}else{
+			$enabled = 0;
+		}
 
 		// module enabled?
 		if (1 == $enabled) {
-
+			$root = $coming_enabled==1?'coming':'settings';
 			$allowedIPsString = $helper->getConfig('allowedIPs', $storeCode);
 
 			// remove spaces from string
@@ -24,7 +30,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 
 			$currentIP = $_SERVER['REMOTE_ADDR'];
 
-			$allowFrontendForAdmins = $helper->getConfig('allowFrontendForAdmins', $storeCode);
+			$allowFrontendForAdmins = $helper->getConfig($root,'allowFrontendForAdmins', $storeCode);
 
 			$adminIp = null;
 			if (1 == $allowFrontendForAdmins) {
@@ -48,7 +54,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 				if (!in_array($currentIP, $allowedIPs)) {
 					$this->__log('Access denied  for IP: ' . $currentIP . ' and store ' . $storeCode, 1, $storeCode);
 
-					$maintenancePage = trim($helper->getConfig('maintenancePage', $storeCode));
+					$maintenancePage = trim($helper->getConfig($root,'maintenancePage', $storeCode));
 					// if custom maintenance page is defined in backend, display this one
 					if ('' !== $maintenancePage) {
 
@@ -66,6 +72,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 					}
 					exit();
 				} else {
+					// i don't like this, switch out for something better
 					$this->__log('Access granted for IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
 				}
 			}
@@ -83,8 +90,8 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 	 */
 	private function __log($string, $verbosityLevelRequired = 1, $storeCode = null, $zendLevel = Zend_Log::DEBUG) {
 		$helper = Mage::helper('wsu_comingsoon');
-		$logFile = trim($helper->getConfig('logFile', $storeCode));
-		$logVerbosity = trim($helper->getConfig('logVerbosity', $storeCode));
+		$logFile = trim($helper->getConfig('settings','logFile', $storeCode));
+		$logVerbosity = trim($helper->getConfig('settings','logVerbosity', $storeCode));
 
 		if ('' === $logFile) {
 			$logFile = 'maintenance.log';

@@ -6,8 +6,8 @@ class Wsu_ComingSoon_Helper_Data extends Mage_Core_Helper_Abstract {
 	 * @param string $key if null or nothing passed current store is used
 	 * @return string config value
 	 */
-	public function getConfig($key, $storeId = null) {
-		$path = 'comingsoon/settings/' . $key;
+	public function getConfig($root, $key, $storeId = null) {
+		$path = 'comingsoon/'.$root.'/' . $key;
 		return Mage::getStoreConfig($path, $storeId);
 	}
 }
