@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Wsu_ComingSoon>
+			<version>0.1.0</version>
+		</Wsu_ComingSoon>
+	</modules>
+	
+	<global>
+		<helpers>
+			<wsu_comingsoon>
+				<class>BalkeTechnologies_StoreMaintenance_Helper</class>
+			</wsu_comingsoon>
+		</helpers>
+		<blocks>
+			<wsu_comingsoon>
+				<class>BalkeTechnologies_StoreMaintenance_Block</class>
+			</wsu_comingsoon>    
+		</blocks>
+		<models>
+			<wsu_comingsoon>
+				<class>BalkeTechnologies_StoreMaintenance_Model</class>    
+			</wsu_comingsoon>
+		</models>
+	</global>
+
+	<stores>
+		<default>
+			<web>
+				<routers>
+					<standard>
+						<area>frontend</area>
+						<class>Wsu_ComingSoon_Controller_Router_Standard</class>
+					</standard>
+				</routers>
+			</web>
+		</default>
+	</stores>
+
+	<default>
+		<web>
+			<routers> 
+				<standard>
+					<area>frontend</area>
+					<class>Wsu_ComingSoon_Controller_Router_Standard</class>
+				</standard>
+			</routers>
+		</web>
+		<comingsoon>
+			<settings>
+				<enabled>0</enabled>
+				<allowedIPs></allowedIPs>
+				<allowFrontendForAdmins>1</allowFrontendForAdmins>
+				<maintenancePage><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Maintenance</title>
+		<style type="text/css"><!--
+
+			*{ margin: 0px; passing: 0px; }
+			body{ background-color: #222222; color: #DDDDDD; font-family: sans-serif; margin-top: 350px; }
+			h1{ margin-bottom: 20px; margin-left: 0px; }
+			h2{ margin-left: 494px; font-size: 1.6em; }
+			.block{ padding: 25px; background-color: #555555; }
+			.centered{ margin-left: auto; margin-right: auto; width: 800px; }
+			--></style>
+	</head>
+	<body>
+		<div class="block">
+			<div class="centered">
+				<h1>we are sorry but this store is down for maintenance</h1>
+				<h2>please try again later ...</h2>
+			</div>
+		</div>
+	</body>
+</html>]]></maintenancePage>
+				<logVerbosity>1</logVerbosity>
+				<logFile>maintenance.log</logFile>
+			</settings>
+		</comingsoon>
+	</default>
+ 
+	<adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<comingsoon>
+											<title>Store Maintenance</title>
+										</comingsoon>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+	 
+</config>
