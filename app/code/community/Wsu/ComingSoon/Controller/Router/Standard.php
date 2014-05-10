@@ -8,15 +8,10 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 
 
 		$coming_enabled = $helper->getConfig('coming','enabled', $storeCode);
-		if (1 != $coming_enabled) {
-			$enabled = $helper->getConfig('settings','enabled', $storeCode);
-		}else{
-			$enabled = 0;
-		}
-
+		$maintenance_enabled = $helper->getConfig('maintenance','enabled', $storeCode);
 		// module enabled?
-		if (1 == $enabled) {
-			$root = $coming_enabled==1?'coming':'settings';
+		if ($maintenance_enabled == 1 || $coming_enabled == 1) {
+			$root = $coming_enabled==1?'coming':'maintenance';
 			$allowedIPsString = $helper->getConfig('allowedIPs', $storeCode);
 
 			// remove spaces from string
@@ -36,7 +31,6 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 			if (1 == $allowFrontendForAdmins) {
 				//get the admin session
 				Mage::getSingleton('core/session', array('name' => 'adminhtml'));
-
 
 				//verify if the user is logged in to the backend
 				$adminSession = Mage::getSingleton('admin/session');
@@ -65,12 +59,16 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 						$response->setHeader('HTTP/1.1', '503 Service Temporarily Unavailable');
 						$response->setHeader('Status', '503 Service Temporarily Unavailable');
 						$response->setHeader('Retry-After', '5000');
-
+						
+						if($coming_enabled==1){
+							$response->setRedirect('/index-coming.php')->sendResponse();
+							exit();
+						}
 						$response->setBody($maintenancePage);
 						$response->sendHeaders();
 						$response->outputBody();
+						exit();
 					}
-					exit();
 				} else {
 					// i don't like this, switch out for something better
 					$this->__log('Access granted for IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
