@@ -76,7 +76,7 @@
 						</logFile>
 					</fields>
 				</coming>
-				<settings translate="label comment">
+				<maintenance translate="label comment">
 					<label>Maintenance Settings</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>1</sort_order>
@@ -141,7 +141,7 @@
 							<show_in_store>1</show_in_store>
 						</logFile>
 					</fields>
-				</settings>
+				</maintenance>
 			</groups>
 		</comingsoon>
 	</sections>
