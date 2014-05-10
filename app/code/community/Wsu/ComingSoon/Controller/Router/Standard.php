@@ -59,12 +59,16 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 						$response->setHeader('HTTP/1.1', '503 Service Temporarily Unavailable');
 						$response->setHeader('Status', '503 Service Temporarily Unavailable');
 						$response->setHeader('Retry-After', '5000');
-
+						
+						if($coming_enabled==1){
+							$response->setRedirect('/index-coming.php')->sendResponse();
+							exit();
+						}
 						$response->setBody($maintenancePage);
 						$response->sendHeaders();
 						$response->outputBody();
+						exit();
 					}
-					exit();
 				} else {
 					// i don't like this, switch out for something better
 					$this->__log('Access granted for IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
