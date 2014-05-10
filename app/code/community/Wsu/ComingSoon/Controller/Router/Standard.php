@@ -61,7 +61,9 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 						$response->setHeader('Retry-After', '5000');
 						
 						if($coming_enabled==1){
-							$response->setRedirect(Mage::getBaseUrl() . 'index-coming.php')->sendResponse();
+							$response->setRedirect(Mage::getBaseUrl() . 'index-coming.php');
+							$response->sendResponse();
+							$response->sendHeaders();
 							exit();
 						}
 						$response->setBody($maintenancePage);
