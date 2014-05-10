@@ -8,15 +8,10 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 
 
 		$coming_enabled = $helper->getConfig('coming','enabled', $storeCode);
-		if (1 != $coming_enabled) {
-			$enabled = $helper->getConfig('settings','enabled', $storeCode);
-		}else{
-			$enabled = 0;
-		}
-
+		$maintenance_enabled = $helper->getConfig('maintenance','enabled', $storeCode);
 		// module enabled?
-		if (1 == $enabled) {
-			$root = $coming_enabled==1?'coming':'settings';
+		if ($maintenance_enabled == 1 || $coming_enabled == 1) {
+			$root = $coming_enabled==1?'coming':'maintenance';
 			$allowedIPsString = $helper->getConfig('allowedIPs', $storeCode);
 
 			// remove spaces from string
@@ -36,7 +31,6 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 			if (1 == $allowFrontendForAdmins) {
 				//get the admin session
 				Mage::getSingleton('core/session', array('name' => 'adminhtml'));
-
 
 				//verify if the user is logged in to the backend
 				$adminSession = Mage::getSingleton('admin/session');
