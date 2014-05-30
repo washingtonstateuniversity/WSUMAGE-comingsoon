@@ -86,8 +86,8 @@
 	<!-- Tabs -->
 	<ul id="wsu-actions-tabs" class="spine-tabs clearfix">
 		<!--<li id="wsu-search-tab"><button>Search</button></li>-->
-		<li id="wsu-contact-tab"><button>Contact</button></li>
-		<li id="wsu-share-tab"><button>Share</button></li>
+		<li id="wsu-contact-tab" class="spine-contact-tab"><button>Contact</button></li>
+		<li id="wsu-share-tab" class="spine-share-tab"><button>Share</button></li>
 		<!--<li id="wsu-print-tab"><button>Print</button></li>-->
 	</ul>
 	
