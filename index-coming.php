@@ -81,7 +81,7 @@
 <header><a href="http://www.wsu.edu/" id="wsu-signature">Washington State University</a></header>
 
 <!-- ACTIONS -->
-<section id="wsu-actions">
+<section id="wsu-actions" class="spine-actions">
 
 	<!-- Tabs -->
 	<ul id="wsu-actions-tabs" class="spine-tabs clearfix">
