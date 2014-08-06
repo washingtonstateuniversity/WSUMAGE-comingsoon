@@ -61,7 +61,7 @@
 			<section class="row sidebar">
 				<div class="column one">
 					<h1>WSU Marketplace</h1>
-					<h2>Comming Soon &bull; Summer `14</h2>
+					<h2>Sorry, we are experiencing technical difficulties</h2>
 				</div><!--/column-->
 			
 				<div class="column two">
