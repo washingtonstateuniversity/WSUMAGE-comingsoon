@@ -61,7 +61,7 @@
 			<section class="row sidebar">
 				<div class="column one">
 					<h1>WSU Marketplace</h1>
-					<h2>Comming Soon &bull; Summer `14</h2>
+					<h2>Sorry, we are experiencing technical difficulties</h2>
 				</div><!--/column-->
 			
 				<div class="column two">
@@ -81,13 +81,13 @@
 <header><a href="http://www.wsu.edu/" id="wsu-signature">Washington State University</a></header>
 
 <!-- ACTIONS -->
-<section id="wsu-actions">
+<section id="wsu-actions" class="spine-actions">
 
 	<!-- Tabs -->
-	<ul id="wsu-actions-tabs" class="spine-tabs clearfix">
+	<ul id="wsu-actions-tabs" class="spine-actions-tabs clearfix">
 		<!--<li id="wsu-search-tab"><button>Search</button></li>-->
-		<li id="wsu-contact-tab"><button>Contact</button></li>
-		<li id="wsu-share-tab"><button>Share</button></li>
+		<li id="wsu-contact-tab" class="spine-contact-tab"><button>Contact</button></li>
+		<li id="wsu-share-tab" class="spine-share-tab"><button>Share</button></li>
 		<!--<li id="wsu-print-tab"><button>Print</button></li>-->
 	</ul>
 	
