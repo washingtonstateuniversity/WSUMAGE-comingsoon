@@ -6,13 +6,12 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 		$helper = Mage::helper('wsu_comingsoon');
 		$storeCode = $request->getStoreCodeFromPath();
 
-		
-
 		$coming_enabled = $helper->getConfig('coming','enabled', $storeCode);
 		$maintenance_enabled = $helper->getConfig('maintenance','enabled', $storeCode);
-		
+
 		$currentUrl = Mage::helper('core/url')->getCurrentUrl();
-		if(strpos($currentUrl,'adminhtml')!==false){
+		$grade = $this->getRequest()->getParam('grade');
+		if(strpos($currentUrl,'adminhtml')!==false || $grade==1){
 			$coming_enabled = 0;
 			$maintenance_enabled = 0;
 		}
