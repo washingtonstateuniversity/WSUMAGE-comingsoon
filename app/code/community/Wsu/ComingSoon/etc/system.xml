@@ -60,6 +60,18 @@
 								<enabled>1</enabled>
 							</depends>
 						</allowedIPs>
+						<message_block translate="label comment">
+							<label>Message Block</label>
+							<comment><![CDATA[ <b>NOTE:</b> this is showing is depending on the template having the call for the message in it. ]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
+						</message_block>
 						<logVerbosity translate="label comment">
 							<label>Log Verbosity</label>
 							<frontend_type>select</frontend_type>
@@ -129,6 +141,18 @@
 								<enabled>1</enabled>
 							</depends>
 						</allowedIPs>
+						<message_block translate="label comment">
+							<label>Message Block</label>
+							<comment><![CDATA[ <b>NOTE:</b> this is showing is depending on the template having the call for the message in it. ]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
+						</message_block>
 						<logVerbosity translate="label comment">
 							<label>Log Verbosity</label>
 							<frontend_type>select</frontend_type>
