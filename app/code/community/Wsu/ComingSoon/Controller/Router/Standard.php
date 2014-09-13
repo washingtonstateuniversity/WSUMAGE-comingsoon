@@ -66,10 +66,16 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 						$response->setHeader('Status', '503 Service Temporarily Unavailable');
 						$response->setHeader('Retry-After', '5000');
 						
+						$type="maintenance";
 						if($coming_enabled==1){
-							$maintenancePage=file_get_contents(Mage::getBaseUrl() . 'index-coming.php');
+							$type="comingsoon";
+							//$maintenancePage='';//file_get_contents(Mage::getBaseUrl() . 'index-coming.php');
 						}
-						$response->setBody($maintenancePage);
+						
+						$html = Mage::app()->getLayout()->createBlock("wsu_comingsoon/${type}")
+									->setTemplate("wsu/comingsoon/${type}.phtml")->toHtml();
+
+						$response->setBody($html);
 						$response->sendHeaders();
 						$response->outputBody();
 						exit();
