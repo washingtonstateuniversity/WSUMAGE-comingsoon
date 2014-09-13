@@ -11,7 +11,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 		$coming_enabled = $helper->getConfig('coming','enabled', $storeCode);
 		$maintenance_enabled = $helper->getConfig('maintenance','enabled', $storeCode);
 		
-		$currentUrl = $this->helper('core/url')->getCurrentUrl();
+		$currentUrl = Mage::helper('core/url')->getCurrentUrl();
 		if(strpos($currentUrl,'adminhtml')!==false){
 			$coming_enabled = 0;
 			$maintenance_enabled = 0;
