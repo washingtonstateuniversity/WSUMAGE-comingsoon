@@ -26,7 +26,7 @@
 					<show_in_store>1</show_in_store>
 					<fields>
 						<enabled translate="label comment">
-							<label>Show Coming Soon Message?</label>
+							<label>Show Coming Soon Page?</label>
 							<comment>enable or disable Coming Soon Message</comment>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
@@ -44,6 +44,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowFrontendForAdmins>
 						<allowedIPs translate="label comment">
 							<label>Allowed IPs</label>
@@ -53,6 +56,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowedIPs>
 						<logVerbosity translate="label comment">
 							<label>Log Verbosity</label>
@@ -62,6 +68,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logVerbosity>
 						<logFile translate="label comment">
 							<label>Logfile</label>
@@ -71,6 +80,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logFile>
 					</fields>
 				</coming>
@@ -101,6 +113,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowFrontendForAdmins>
 						<allowedIPs translate="label comment">
 							<label>Allowed IPs</label>
@@ -110,6 +125,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowedIPs>
 						<logVerbosity translate="label comment">
 							<label>Log Verbosity</label>
@@ -119,6 +137,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logVerbosity>
 						<logFile translate="label comment">
 							<label>Logfile</label>
@@ -128,6 +149,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logFile>
 					</fields>
 				</maintenance>
