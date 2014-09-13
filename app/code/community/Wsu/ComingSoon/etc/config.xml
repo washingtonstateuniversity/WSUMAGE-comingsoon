@@ -46,7 +46,7 @@
 				</standard>
 			</routers>
 		</web>
-		<wsu_comingsoon>
+		<comingsoon>
 			<maintenance>
 				<enabled>0</enabled>
 				<allowedIPs></allowedIPs>
@@ -63,7 +63,7 @@
 				<logVerbosity>1</logVerbosity>
 				<logFile>maintenance.log</logFile>
 			</coming>
-		</wsu_comingsoon>
+		</comingsoon>
 		
 		
 		
