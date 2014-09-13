@@ -54,32 +54,29 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 				if (!in_array($currentIP, $allowedIPs)) {
 					$this->__log('Access denied  for IP: ' . $currentIP . ' and store ' . $storeCode, 1, $storeCode);
 
-					$maintenancePage = trim($helper->getConfig($root,'maintenancePage', $storeCode));
-					// if custom maintenance page is defined in backend, display this one
-					if ('' !== $maintenancePage) {
 
-						Mage::getSingleton('core/session', array('name' => 'front'));
+					Mage::getSingleton('core/session', array('name' => 'front'));
 
-						$response = $this->getFront()->getResponse();
+					$response = $this->getFront()->getResponse();
 
-						$response->setHeader('HTTP/1.1', '503 Service Temporarily Unavailable');
-						$response->setHeader('Status', '503 Service Temporarily Unavailable');
-						$response->setHeader('Retry-After', '5000');
-						
-						$type="maintenance";
-						if($coming_enabled==1){
-							$type="comingsoon";
-							//$maintenancePage='';//file_get_contents(Mage::getBaseUrl() . 'index-coming.php');
-						}
-						
-						$html = Mage::app()->getLayout()->createBlock("wsu_comingsoon/${type}")
-									->setTemplate("wsu/comingsoon/${type}.phtml")->toHtml();
-
-						$response->setBody($html);
-						$response->sendHeaders();
-						$response->outputBody();
-						exit();
+					$response->setHeader('HTTP/1.1', '503 Service Temporarily Unavailable');
+					$response->setHeader('Status', '503 Service Temporarily Unavailable');
+					$response->setHeader('Retry-After', '5000');
+					
+					$type="maintenance";
+					if($coming_enabled==1){
+						$type="comingsoon";
+						//$maintenancePage='';//file_get_contents(Mage::getBaseUrl() . 'index-coming.php');
 					}
+					
+					$html = Mage::app()->getLayout()->createBlock("wsu_comingsoon/${type}")
+								->setTemplate("wsu/comingsoon/${type}.phtml")->toHtml();
+
+					$response->setBody($html);
+					$response->sendHeaders();
+					$response->outputBody();
+					exit();
+
 				} else {
 					// i don't like this, switch out for something better
 					$this->__log('Access granted for IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
