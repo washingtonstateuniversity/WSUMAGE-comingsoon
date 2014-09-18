@@ -10,6 +10,13 @@
 			<show_in_website>1</show_in_website>
 			<show_in_store>1</show_in_store>
 			<groups>
+				<hint>
+				  <frontend_model>wsu_comingsoon/adminhtml_system_config_fieldset_hint</frontend_model>
+				  <sort_order>0</sort_order>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>
+				</hint>
 				<coming translate="label comment">
 					<label>Coming Soon Settings</label>
 					<frontend_type>text</frontend_type>
@@ -19,7 +26,7 @@
 					<show_in_store>1</show_in_store>
 					<fields>
 						<enabled translate="label comment">
-							<label>Show Coming Soon Message?</label>
+							<label>Show Coming Soon Page?</label>
 							<comment>enable or disable Coming Soon Message</comment>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
@@ -30,32 +37,41 @@
 						</enabled>
 						<allowFrontendForAdmins translate="label comment">
 							<label>Frontend Access for Admins?</label>
-							<comment>logged in admins bypass Store Maintenance?</comment>
+							<comment>logged in admins bypass Cooming soon page?</comment>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
 							<sort_order>2</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowFrontendForAdmins>
 						<allowedIPs translate="label comment">
 							<label>Allowed IPs</label>
-							<comment>IPs that bypass Store Maintenance</comment>
+							<comment>IPs that bypass Cooming soon page</comment>
 							<frontend_type>text</frontend_type>
 							<sort_order>3</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowedIPs>
-						<maintenancePage translate="label comment">
-							<label>Maintenance Page HTML Code</label>
-							<comment><![CDATA[Instead of blank page, show this HTML code<br />(leave empty for blank page)]]></comment>
+						<message_block translate="label comment">
+							<label>Message Block</label>
+							<comment><![CDATA[ <b>NOTE:</b> this is showing is depending on the template having the call for the message in it. ]]></comment>
 							<frontend_type>textarea</frontend_type>
 							<sort_order>4</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
-						</maintenancePage>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
+						</message_block>
 						<logVerbosity translate="label comment">
 							<label>Log Verbosity</label>
 							<frontend_type>select</frontend_type>
@@ -64,6 +80,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logVerbosity>
 						<logFile translate="label comment">
 							<label>Logfile</label>
@@ -73,6 +92,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logFile>
 					</fields>
 				</coming>
@@ -103,6 +125,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowFrontendForAdmins>
 						<allowedIPs translate="label comment">
 							<label>Allowed IPs</label>
@@ -112,16 +137,22 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</allowedIPs>
-						<maintenancePage translate="label comment">
-							<label>Maintenance Page HTML Code</label>
-							<comment><![CDATA[Instead of blank page, show this HTML code<br />(leave empty for blank page)]]></comment>
+						<message_block translate="label comment">
+							<label>Message Block</label>
+							<comment><![CDATA[ <b>NOTE:</b> this is showing is depending on the template having the call for the message in it. ]]></comment>
 							<frontend_type>textarea</frontend_type>
 							<sort_order>4</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
-						</maintenancePage>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
+						</message_block>
 						<logVerbosity translate="label comment">
 							<label>Log Verbosity</label>
 							<frontend_type>select</frontend_type>
@@ -130,6 +161,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logVerbosity>
 						<logFile translate="label comment">
 							<label>Logfile</label>
@@ -139,6 +173,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
+							<depends>
+								<enabled>1</enabled>
+							</depends>
 						</logFile>
 					</fields>
 				</maintenance>

@@ -6,75 +6,88 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 		$helper = Mage::helper('wsu_comingsoon');
 		$storeCode = $request->getStoreCodeFromPath();
 
-
 		$coming_enabled = $helper->getConfig('coming','enabled', $storeCode);
 		$maintenance_enabled = $helper->getConfig('maintenance','enabled', $storeCode);
+
 		// module enabled?
 		if ($maintenance_enabled == 1 || $coming_enabled == 1) {
-			$root = $coming_enabled==1?'coming':'maintenance';
-			$allowedIPsString = $helper->getConfig('allowedIPs', $storeCode);
-
-			// remove spaces from string
-			$allowedIPsString = preg_replace('/ /', '', $allowedIPsString);
-
-			$allowedIPs = array();
-
-			if ('' !== trim($allowedIPsString)) {
-				$allowedIPs = explode(',', $allowedIPsString);
+			
+			$show = true;
+			
+			$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+			$grade = $request->getParam('grade');
+			if(strpos($currentUrl,'adminhtml')!==false || $grade==1){
+				$show = false;
 			}
-
-			$currentIP = $_SERVER['REMOTE_ADDR'];
-
-			$allowFrontendForAdmins = $helper->getConfig($root,'allowFrontendForAdmins', $storeCode);
-
-			$adminIp = null;
-			if (1 == $allowFrontendForAdmins) {
-				//get the admin session
-				Mage::getSingleton('core/session', array('name' => 'adminhtml'));
-
-				//verify if the user is logged in to the backend
-				$adminSession = Mage::getSingleton('admin/session');
-				if ($adminSession->isLoggedIn()) {
-					//do stuff
-					$adminIp = $adminSession['_session_validator_data']['remote_addr'];
+			
+			if($show){
+				$root = $coming_enabled==1?'coming':'maintenance';
+				$allowedIPsString = $helper->getConfig('allowedIPs', $storeCode);
+	
+				// remove spaces from string
+				$allowedIPsString = preg_replace('/ /', '', $allowedIPsString);
+	
+				$allowedIPs = array();
+	
+				if ('' !== trim($allowedIPsString)) {
+					$allowedIPs = explode(',', $allowedIPsString);
 				}
-			}
-
-			if ($currentIP === $adminIp) {
-				// current user is logged in as admin
-				$this->__log('Access granted for admin with IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
-			} else {
-				// current user allowed to access website?
-				if (!in_array($currentIP, $allowedIPs)) {
-					$this->__log('Access denied  for IP: ' . $currentIP . ' and store ' . $storeCode, 1, $storeCode);
-
-					$maintenancePage = trim($helper->getConfig($root,'maintenancePage', $storeCode));
-					// if custom maintenance page is defined in backend, display this one
-					if ('' !== $maintenancePage) {
-
+	
+				$currentIP = $_SERVER['REMOTE_ADDR'];
+	
+				$allowFrontendForAdmins = $helper->getConfig($root,'allowFrontendForAdmins', $storeCode);
+	
+				$adminIp = null;
+				if (1 == $allowFrontendForAdmins) {
+					//get the admin session
+					Mage::getSingleton('core/session', array('name' => 'adminhtml'));
+	
+					//verify if the user is logged in to the backend
+					$adminSession = Mage::getSingleton('admin/session');
+					if ($adminSession->isLoggedIn()) {
+						//do stuff
+						$adminIp = $adminSession['_session_validator_data']['remote_addr'];
+					}
+				}
+	
+				if ($currentIP === $adminIp) {
+					// current user is logged in as admin
+					$this->__log('Access granted for admin with IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
+				} else {
+					// current user allowed to access website?
+					if (!in_array($currentIP, $allowedIPs)) {
+						$this->__log('Access denied  for IP: ' . $currentIP . ' and store ' . $storeCode, 1, $storeCode);
+	
+	
 						Mage::getSingleton('core/session', array('name' => 'front'));
-
+	
 						$response = $this->getFront()->getResponse();
-
+	
 						$response->setHeader('HTTP/1.1', '503 Service Temporarily Unavailable');
 						$response->setHeader('Status', '503 Service Temporarily Unavailable');
 						$response->setHeader('Retry-After', '5000');
 						
+						$type="maintenance";
 						if($coming_enabled==1){
-							$maintenancePage=file_get_contents(Mage::getBaseUrl() . 'index-coming.php');
+							$type="comingsoon";
+							//$maintenancePage='';//file_get_contents(Mage::getBaseUrl() . 'index-coming.php');
 						}
-						$response->setBody($maintenancePage);
+						
+						$html = Mage::app()->getLayout()->createBlock("wsu_comingsoon/${type}")
+									->setTemplate("wsu/comingsoon/${type}.phtml")->toHtml();
+	
+						$response->setBody($html);
 						$response->sendHeaders();
 						$response->outputBody();
 						exit();
+	
+					} else {
+						// i don't like this, switch out for something better
+						$this->__log('Access granted for IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
 					}
-				} else {
-					// i don't like this, switch out for something better
-					$this->__log('Access granted for IP: ' . $currentIP . ' and store ' . $storeCode, 2, $storeCode);
 				}
 			}
 		}
-
 		return parent::match($request);
 	}
 
