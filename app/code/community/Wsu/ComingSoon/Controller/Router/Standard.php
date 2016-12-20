@@ -22,7 +22,7 @@ class Wsu_ComingSoon_Controller_Router_Standard extends Mage_Core_Controller_Var
 			
 			if($show){
 				$root = $coming_enabled==1?'coming':'maintenance';
-				$allowedIPsString = $helper->getConfig('allowedIPs', $storeCode);
+				$allowedIPsString = $helper->getConfig($root,'allowedIPs', $storeCode);
 	
 				// remove spaces from string
 				$allowedIPsString = preg_replace('/ /', '', $allowedIPsString);
